@@ -1,7 +1,5 @@
 #!/usr/bin/python3
+
 def read_file(filename=""):
-    contents = ""
-    if filename:
-        with open(filename) as file:
-            contents = file.read()
-    return contents
+    with open(filename, encoding='utf-8') as file:
+        print(file.read())
