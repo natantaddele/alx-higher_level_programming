@@ -1,0 +1,4 @@
+Example:
+>>> read_file("./tests/testfile.txt")
+This is a test file.
+It is being used to check file reading.
