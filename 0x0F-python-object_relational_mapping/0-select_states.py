@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import hbtn_0e_0_usa
+import MySQLdb
 import sys
 
 # Retrieve command-line arguments
@@ -8,15 +8,15 @@ mysql_password = sys.argv[2]
 database_name = sys.argv[3]
 
 # Connect to the MySQL server
-db = hbtn_0e_0_usa.connect(user=mysql_user, passwd=mysql_password, host="localhost", port=3306)
+db = MySQLdb.connect(user=mysql_user, passwd=mysql_password, host="localhost", port=3306)
 cursor = db.cursor()
 
 # Create the database if it doesn't exist
-create_db_query = f"CREATE DATABASE IF NOT EXISTS {hbtn_0e_0_usa}"
+create_db_query = f"CREATE DATABASE IF NOT EXISTS mysql"
 cursor.execute(create_db_query)
 
 # Switch to the specified database
-use_db_query = f"USE {hbtn_0e_0_usa}"
+use_db_query = f"USE mysql"
 cursor.execute(use_db_query)
 
 # Create the states table if it doesn't exist
