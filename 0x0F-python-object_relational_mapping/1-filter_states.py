@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states with a name starting with N (upper N) from the database hbtn_0e_0_usa"""
+"""Lists all states with a name starting with N from the database hbtn_0e_0_usa"""
 
 import sys
 import MySQLdb
@@ -7,7 +7,7 @@ import MySQLdb
 if __name__ == "__main__":
     # Check if all required arguments are provided
     if len(sys.argv) != 4:
-        print("Usage: ./script.py <mysql username> <mysql password> <database name>")
+        print("Usage: ./1-filter_states.py <mysql username> <mysql password> <database name>")
         sys.exit(1)
     
     # Retrieve command line arguments
@@ -17,21 +17,15 @@ if __name__ == "__main__":
 
     # Connect to MySQL server
     try:
-        db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=username,
-            passwd=password,
-            db=database
-        )
+        db = MySQLdb.connect(user=username, passwd=password, db=database)
         c = db.cursor()
     except MySQLdb.Error as e:
         print("Error connecting to MySQL:", e)
         sys.exit(1)
 
-    # Execute the query to select states starting with N
+    # Execute the query to select states starting with N and order by id
     try:
-        c.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+        c.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
         results = c.fetchall()
         for state in results:
             print(state)
