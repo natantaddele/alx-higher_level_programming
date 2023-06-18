@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import hbtn_0e_0_usa
 import sys
 
